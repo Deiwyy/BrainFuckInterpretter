@@ -6,20 +6,34 @@ class Interpretter(object):
             '<>': self.move,
             '+-': self.cellShift,
             '[]': self.loop,
-            '.,': self.io
+            '.,': self.io,
+            '/1234567890\\': self.jump
         }
-        self.code = code  # self.stripCode(code)
+        self.code = self.stripCode(code)
         self.loops = []
         self.cells = [0 for _ in range(30_000)]
         self.cCell = 0
         self.currentCodeInd = 0
+
+        self.currentJump = ''
+        self.startJump = False
     
-    # def stripCode(self, code) -> str:
-    #     strippedCode = ''
-    #     for c in code:
-    #         for fc in self.functions.keys():
-    #             if c in fc: strippedCode += c
-    #     return strippedCode
+    def stripCode(self, code) -> str:
+        strippedCode = ''
+        for c in code:
+            for fc in self.functions.keys():
+                if c in fc: strippedCode += c
+        return strippedCode
+
+    def jump(self, c):
+        if c == '/':
+            self.startJump = True
+        if c in '1234567890' and self.startJump:
+            self.currentJump += c
+        if c == '\\':
+            self.startJump = False
+            self.cCell = int(self.currentJump)
+            self.currentJump = ''
 
     def move(self, c):
         if c == '<':
@@ -39,7 +53,7 @@ class Interpretter(object):
 
     def io(self, c):
         if c == ',':
-            self.cells[self.cCell] = ord(input()[0])
+            self.cells[self.cCell] = ord(input('single character: ')[0])
         if c == '.':
             print(chr(self.cells[self.cCell]), end='')
 
