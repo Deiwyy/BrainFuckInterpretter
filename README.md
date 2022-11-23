@@ -11,3 +11,7 @@ example usage:
 #### index
 anything called index is a cells number. By doing `+`, you jump one cell up etc.
 the first cell has an index of 0, not 1.
+
+
+## Standard BF syntax 
+Every file you wrote in pure BF will (knowing my programming skills `should`) work, unless something changes in a future update.
