@@ -8,6 +8,6 @@ example usage:
 
 ### Keep in mind
 
-#### <index>
-anything called index (or <index>) is a cells number. By doing `+`, you jump one cell up etc.
+#### index
+anything called index (or index) is a cells number. By doing `+`, you jump one cell up etc.
 the first cell has an index of 0, not 1.
