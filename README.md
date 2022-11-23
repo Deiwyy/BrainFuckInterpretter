@@ -4,7 +4,7 @@
 /index\ will jump into the [index] cell
 
 example usage:
-/544\ jumps into cell 544 without you having to do + 544 times
+/544\ jumps into cell 544 without you having to do `+` 544 times
 
 ### Keep in mind
 
